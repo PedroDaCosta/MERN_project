@@ -1,3 +1,4 @@
+//START POINT OF CLIENT SIDE
 import React from 'react';
 import ReactDOM from 'react-dom';
 
