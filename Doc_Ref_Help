@@ -1,5 +1,15 @@
 {
+    "Web Developer Road Map": "https://tkssharma.com/reactjs-roadmap-for-developers/",
     "Full Stack MERN Project":"https://www.youtube.com/watch?v=ngc9gnGgUdA&t=2583s",
+
+    "JS Default Parameters": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters",
+    "JS Destructuring Assignment": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment",
+    "JS Currying":"https://blog.bitsrc.io/understanding-currying-in-javascript-ceb2188c339",
+    "":"",
+
+    "JSX looks like an abomination": "https://medium.com/javascript-scene/jsx-looks-like-an-abomination-1c1ec351a918",
+
+    "Redux Three Principles": "https://redux.js.org/understanding/thinking-in-redux/three-principles",
 
     "Mongo User Creation": "https://docs.mongodb.com/manual/reference/method/db.createUser/",
     "Mongo Cheat Sheet": "https://developer.mongodb.com/quickstart/cheat-sheet/",
