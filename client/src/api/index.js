@@ -8,3 +8,8 @@ export const createPost = (newPost) => {
   //console.log();
   return axios.post(url, newPost);
 }
+
+export const updatePost = (id, updatedPost) => {
+  //console.log();
+  return axios.patch(`${url}/${id}`, updatedPost);
+}

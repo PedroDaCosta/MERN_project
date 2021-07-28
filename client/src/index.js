@@ -30,12 +30,15 @@ import reducers from './reducers';
 
 import App from './App';
 
+import './styles.css';
+
 /*Creates a Redux store that holds the complete state tree of your app. 
 There should only be a single store in your app.*/
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
-//DOM styling this can be done in the JSX with the use of react-helmet module
-  document.body.style.backgroundColor = "grey";
+/*DOM styling this can be done in the JSX with the use of react-helmet module
+  //document.body.style.backgroundColor = "none";
+*/
 
 /*Applies return from function App and Provider to element 'root' of the DOM.*/
 ReactDOM.render(

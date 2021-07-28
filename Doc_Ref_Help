@@ -1,4 +1,8 @@
 {
+    "HTML SHELL": "https://htmlshell.com/",
+    "SVG Backgrounds": "https://www.svgbackgrounds.com/",
+    
+
     "Web Developer Road Map": "https://tkssharma.com/reactjs-roadmap-for-developers/",
     "Full Stack MERN Project":"https://www.youtube.com/watch?v=ngc9gnGgUdA&t=2583s",
 
@@ -8,6 +12,8 @@
     "":"",
 
     "JSX looks like an abomination": "https://medium.com/javascript-scene/jsx-looks-like-an-abomination-1c1ec351a918",
+
+    "React Hooks": "https://www.pluralsight.com/guides/simplifying-redux-bindings-with-react-hooks",
 
     "Redux Three Principles": "https://redux.js.org/understanding/thinking-in-redux/three-principles",
 
