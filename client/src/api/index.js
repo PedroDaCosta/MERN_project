@@ -13,3 +13,13 @@ export const updatePost = (id, updatedPost) => {
   //console.log();
   return axios.patch(`${url}/${id}`, updatedPost);
 }
+
+export const deletePost = (id) => {
+  //console.log();
+  return axios.delete(`${url}/${id}`);
+}
+
+export const likePost = (id) => {
+  //console.log();
+  return axios.patch(`${url}/${id}/likePost`);
+}

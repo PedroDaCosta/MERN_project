@@ -54,3 +54,32 @@ export const updatePost = (id, post) => async (dispatch) => {
     console.log(err.message);
   }
 };
+
+/*similar as the previous function but use other api function*/
+export const deletePost = (id) => async (dispatch) => {
+  try{
+    
+    const deletedPost = await api.deletePost(id) != null;
+    //returns nothing since its not needed
+    
+    deletedPost && dispatch({ type: "DELETE", payload: id });
+
+  }catch (err) {
+    console.log(err.message);
+  }
+};
+
+/*similar as the previous function but use other api function*/
+export const likePost = (id) => async (dispatch) => {
+  try{
+    
+    //console.log('request contend: ', post);
+    const { data } = await api.likePost(id);
+    //console.log('response contend: ', data);
+    
+    dispatch({ type: "LIKE", payload: data });
+
+  }catch (err) {
+    console.log(err.message);
+  }
+};
