@@ -59,7 +59,7 @@ const App = () => {
             </AppBar>
             <Grow in>
                 <Container>
-                    <Grid container justifyContent="space-between" alignItems="stretch" spacing={3}>
+                    <Grid className={classes.mainContainer} container justifyContent="space-between" alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={7}>
                             {/* passes the function setCurrentId into the "component"/function The arguments are send as an array so they have to be 
                             deconstructed later on */}

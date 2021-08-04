@@ -20,4 +20,7 @@
     "Mongo User Creation": "https://docs.mongodb.com/manual/reference/method/db.createUser/",
     "Mongo Cheat Sheet": "https://developer.mongodb.com/quickstart/cheat-sheet/",
 
+    "How to Host Nodejs/Express Applications on Namecheap cPanel ":"https://dev.to/iamnotstatic/how-to-host-nodejs-express-applications-on-namecheap-cpanel-nh9",
+    "Build and deploy frontend React applications in Namecheap":"https://davenewman.tech/blog/host-react-namecheap/",
+
 }

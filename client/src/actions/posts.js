@@ -1,4 +1,6 @@
 import * as api from "../api";
+import * as constants from '../constants/actionTypes';
+
 
 /**
  * Action Creators - Functions that return Actions. 
@@ -18,7 +20,7 @@ export const getPosts = () => async (dispatch) => {
     const { data } = await api.fetchPosts();
 
     /*Dispatch the action to the reducer by means of the middlewear in this case redux-thunk*/
-    dispatch({ type: "FETCH_ALL", payload: data });
+    dispatch({ type: constants.FETCH_ALL, payload: data });
 
   }catch (err) {
     console.log(err.message);
@@ -33,7 +35,7 @@ export const createPost = (post) => async (dispatch) => {
     const { data } = await api.createPost(post);
     //console.log('response contend: ', data);
     
-    dispatch({ type: "CREATE", payload: data });
+    dispatch({ type: constants.CREATE, payload: data });
 
   }catch (err) {
     console.log(err.message);
@@ -48,7 +50,7 @@ export const updatePost = (id, post) => async (dispatch) => {
     const { data } = await api.updatePost(id, post);
     //console.log('response contend: ', data);
     
-    dispatch({ type: "UPDATE", payload: data });
+    dispatch({ type: constants.UPDATE, payload: data });
 
   }catch (err) {
     console.log(err.message);
@@ -62,7 +64,7 @@ export const deletePost = (id) => async (dispatch) => {
     const deletedPost = await api.deletePost(id) != null;
     //returns nothing since its not needed
     
-    deletedPost && dispatch({ type: "DELETE", payload: id });
+    deletedPost && dispatch({ type: constants.DELETE, payload: id });
 
   }catch (err) {
     console.log(err.message);
@@ -77,7 +79,7 @@ export const likePost = (id) => async (dispatch) => {
     const { data } = await api.likePost(id);
     //console.log('response contend: ', data);
     
-    dispatch({ type: "LIKE", payload: data });
+    dispatch({ type: constants.LIKE, payload: data });
 
   }catch (err) {
     console.log(err.message);
