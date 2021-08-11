@@ -15,25 +15,45 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Input from "./Input";
 import Icon from "./icon";
 
+import { signin, signup } from "../../actions/auth";
+
 import useStyles from "./styles";
+
+const initialState = {firstName:'', lastName:'', email:'', password:'', passwordConfirmation:''};
 
 const Auth = () => {
   const classes = useStyles();
   //const isSignup = false;
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
+  const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
+  
 
-  const handleSubmit = () => {};
-  const handleChange = () => {};
+  const handleChange = (event) => {
+    setFormData({...formData, [event.target.name]: event.target.value})
+
+  };
 
   const handleShowPassword = () =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
 
   const switchMode = () => {
     setIsSignup((prevSignup) => !prevSignup);
-    handleShowPassword(false);
+    setShowPassword(false);
+  };
+
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //console.log(formData);
+
+    if(isSignup){
+      dispatch(signup(formData, history));
+    }else{
+      dispatch(signin(formData, history));
+    }
   };
 
   const googleSuccess = async (res)=>{
@@ -44,7 +64,7 @@ const Auth = () => {
     try{
       dispatch({type: "AUTH", data: {result, token}});
       
-      history.push("/");
+      history.push('/');
     }catch(err){
       console.log(err.message);
     }

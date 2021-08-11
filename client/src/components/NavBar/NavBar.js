@@ -17,20 +17,21 @@ const NavBar = () => {
 
   useEffect(()=>
     { 
-      const token = user?.token;
+      //const token = user?.token;
 
       //JWT - Java Web Token... 
       
       setUser(JSON.parse(localStorage.getItem("profile")));
     }, 
-    [user, location]);
+    [location]);
 
   const logout = () => {
     dispatch({type: "LOGOUT"})
     
-    history.push("/");
-    
     setUser(null);
+    
+    history.push('/');
+    
   };
 
   return (
@@ -67,8 +68,8 @@ const NavBar = () => {
               {user.result.name}
             </Typography>
             <Button
-              variant="contained"
               className={classes.logout}
+              variant="contained"
               color="secondary"
               onClick={logout}
             >

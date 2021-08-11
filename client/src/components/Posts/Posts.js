@@ -12,7 +12,7 @@ const Posts = ({ setCurrentId })=>{
   is in direct relation to the reducers > index.js - posts field */
   const posts = useSelector( (state) => state.posts );
   
-  console.log(posts);
+  //console.log(posts);
 
   const classes = useStyles();
 

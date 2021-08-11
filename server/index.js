@@ -5,6 +5,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import postRoutes from './routes/posts.js';
+import userRoutes from './routes/users.js';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(cors());
 
 //define this only after you define cors;
 app.use('/posts', postRoutes); 
+app.use('/users', userRoutes); 
 
 //stores informations about Database Connection to mongodb on atlas need to specify <user>:<password> and <db_name> 
 const CONNECTION_URL = process.env.CONNECTION_URL;

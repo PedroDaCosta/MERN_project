@@ -72,6 +72,10 @@ export const deletePost = async (req, res) => {
 
 
 export const likePost = async (req, res) => {
+  
+  /* get token from jwt */
+  if(!req.userId) { return res.json({message: 'Unauthenticated'});}
+
   /* deconstruct req.params gets element with key id and set it into a new 
   variable of name _id */
   const { id: _id } = req.params;
@@ -82,10 +86,20 @@ export const likePost = async (req, res) => {
 
   const post = await PostMessage.findById( _id );
   
+  const index = post.likes.findIndex((id) => id === String( req.userId ));
+
+  if(index === -1){
+    // like the post
+    post.likes.push(req.userId);
+  }else{
+    post.likes = post.likes.filter((id) => id !== String( req.userId ));
+    // dislike the post
+  }
+
   /* same as other functions*/
   const updatedPost = await PostMessage.findByIdAndUpdate(
     _id,
-    { likeCount: post.likeCount + 1 },
+    post,
     { new: true }
   );
 
