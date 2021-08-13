@@ -17,13 +17,15 @@ export const getPosts = () => async (dispatch) => {
     promise function that in turn returns an http reponse. Then the response 
     is imediatly deconstructed with the use of the "destructuring assignment 
     syntax" that serch for the key 'data' and returns its value/s.*/
+    
     const { data } = await api.fetchPosts();
-
+    console.log(data);
+    
     /*Dispatch the action to the reducer by means of the middlewear in this case redux-thunk*/
     dispatch({ type: constants.FETCH_ALL, payload: data });
 
   }catch (err) {
-    console.log(err.message);
+    console.log(err);
   }
 };
 

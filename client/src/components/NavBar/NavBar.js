@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
+import decode from 'jwt-decode';
 
 import logo from "../../assets/images/gallery_icon.png";
 
@@ -17,9 +18,16 @@ const NavBar = () => {
 
   useEffect(()=>
     { 
-      //const token = user?.token;
-
       //JWT - Java Web Token... 
+      const token = user?.token;
+      if(token){
+
+        const decodedToken = decode(token);
+        console.log("token expires: ", (decodedToken.exp - Math.floor(new Date().getTime()/1000))%60, "min");
+        if(decodedToken.exp*1000 < new Date().getTime()){
+          logout();
+        }
+      }
       
       setUser(JSON.parse(localStorage.getItem("profile")));
     }, 

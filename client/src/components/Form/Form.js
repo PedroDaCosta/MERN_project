@@ -9,9 +9,12 @@ import { createPost, updatePost } from "../../actions/posts";
 import useStyles from "./styles";
 
 const Form = ({ currentId, setCurrentId }) => {
+
+  const user = JSON.parse(localStorage.getItem('profile')); 
+
   /*Creates a object that is passed as argumento into useState. useState is a Hook that allows you to have state variables in functional components. You pass the initial state to this function and it returns a variable with the current state value (postData) and another function to update this value (setPostData).*/
   const [postData, setPostData] = useState({
-    creator: "",
+    //creator: "",
     title: "",
     message: "",
     tags: "",
@@ -38,9 +41,9 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if (currentId) {
-      dispatch(updatePost(currentId, postData));
+      dispatch(updatePost(currentId, {...postData, name: user?.result?.name} ));
     } else {
-      dispatch(createPost(postData));
+      dispatch(createPost( {...postData, name: user?.result?.name} ));
     }
     //clear field of the form once it is submited
     clear();
@@ -59,6 +62,17 @@ const Form = ({ currentId, setCurrentId }) => {
 
   const classes = useStyles();
 
+  
+  if(!user?.result?.name){
+    return(
+      <Paper className={classes.paper}>
+        <Typography variant="h6" align="center">
+          Please Sign In to create your own memories and like other's memories.
+        </Typography>
+      </Paper>
+    )
+  }
+
   return (
     <Paper className={classes.paper}>
       <form autoComplete="off" noValidate onSubmit={handleSubmit}>
@@ -67,7 +81,7 @@ const Form = ({ currentId, setCurrentId }) => {
         gets the current value of creator from the postData object */}
         {/* onChange={ (e) => setPostData({ ...postData, creator: e.target.value })}
         on value change set the value to the "postData.creator" to the value in the input field. Notice the use of "...postData" this is usefull to append a value to a field instead of rewriting the whole object with just that field and value*/}
-        <TextField
+        {/*<TextField
           name="creator"
           variant="outlined"
           label="Creator"
@@ -76,7 +90,7 @@ const Form = ({ currentId, setCurrentId }) => {
           onChange={(e) => {
             setPostData({ ...postData, creator: e.target.value });
           }}
-        />
+        />*/}
         <TextField
           name="title"
           variant="outlined"

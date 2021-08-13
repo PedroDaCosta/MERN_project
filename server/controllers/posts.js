@@ -4,8 +4,9 @@ import { PostMessage } from "../models/postsMessage.js";
 
 export const getPosts = async (req, res) => {
   try {
+    
     const postMessages = await PostMessage.find();
-
+    
     res.status(200).json(postMessages);
   } catch (err) {
     res.status(404).json({ message: err.message });
@@ -14,9 +15,12 @@ export const getPosts = async (req, res) => {
 
 
 export const createPost = async (req, res) => {
+  /* get token from jwt */
+  if(!req.userId) { return res.json({message: 'Unauthenticated'});}
+
   const post = req.body;
 
-  const newPost = new PostMessage(post);
+  const newPost = new PostMessage({...post, creator_id: req.userId, currentAt: new Date().toISOString()});
 
   try {
     await newPost.save();
@@ -29,14 +33,19 @@ export const createPost = async (req, res) => {
 
 
 export const updatePost = async (req, res) => {
+  if(!req.userId) { return res.status(404).json({message: 'Unauthenticated'});}
+
   /* deconstruct req.params gets element with key id and set it into a new 
   variable of name _id */
   const { id: _id } = req.params;
-  const post = req.body;
 
+  const post = req.body;
+  
   if (!mongoose.Types.ObjectId.isValid(_id)) {
     return res.status(404).json("Didn't find any document with that id.");
   }
+
+  if(post.creator_id !== req.userId){ return res.status(404).json("Ids don't match you don't have authorization to delete this post");}
 
   /* findIdAndUpdate takes 3 agruments one is the id of the document the
       the second is the document and his values to be rewriten and last an 
@@ -54,13 +63,16 @@ export const updatePost = async (req, res) => {
 
 
 export const deletePost = async (req, res) => {
+
+  if(!req.userId) { return res.status(404).json({message: 'Unauthenticated'});}
+
   /* deconstruct req.params gets element with key id and set it into a new 
   variable of name _id */
   const { id: _id } = req.params;
-  
-  if (!mongoose.Types.ObjectId.isValid(_id)) {
-    return res.status(404).json("Didn't find any document with that id.");
-  }
+
+  const post = await PostMessage.findById( _id );
+
+  if(post.creator_id !== req.userId){ return res.status(404).json("Ids don't match you don't have authorization to delete this post");}
 
   /* findIdAndDelete may takes 3 agruments but its only essential that 
       you pass the _id of the document that you want to delete.
@@ -92,8 +104,8 @@ export const likePost = async (req, res) => {
     // like the post
     post.likes.push(req.userId);
   }else{
-    post.likes = post.likes.filter((id) => id !== String( req.userId ));
     // dislike the post
+    post.likes = post.likes.filter((id) => id !== String( req.userId ));
   }
 
   /* same as other functions*/

@@ -20,6 +20,7 @@ import useStyles from "./styles";
 const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const creator = post.creator ? post.creator : post.name;
 
   return (
     <Card className={classes.card}>
@@ -31,7 +32,7 @@ const Post = ({ post, setCurrentId }) => {
       />
       <div className={classes.overlay}>
         {/*image overlay - creator name*/}
-        <Typography variant="h6">{post.creator}</Typography>
+        <Typography variant="h6">{creator}</Typography>
         {/*image overlay - date of creation*/}
         <Typography variant="body2">
           {moment(post.createdAt).fromNow()}
@@ -81,7 +82,7 @@ const Post = ({ post, setCurrentId }) => {
         >
           <ThumbUpAltIcon fontSize="small" />
           Like &nbsp;
-          {post.likeCount}
+          {post.likes.length}
         </Button>
         {/* Post delete button */}
         <Button
