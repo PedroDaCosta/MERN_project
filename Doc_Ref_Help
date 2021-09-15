@@ -1,17 +1,30 @@
 {
+    "HTML SHELL": "https://htmlshell.com/",
+    "SVG Backgrounds": "https://www.svgbackgrounds.com/",
+    
+
     "Web Developer Road Map": "https://tkssharma.com/reactjs-roadmap-for-developers/",
     "Full Stack MERN Project":"https://www.youtube.com/watch?v=ngc9gnGgUdA&t=2583s",
 
+    "JS Array Operations","https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array",
     "JS Default Parameters": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters",
     "JS Destructuring Assignment": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment",
     "JS Currying":"https://blog.bitsrc.io/understanding-currying-in-javascript-ceb2188c339",
-    "":"",
+    "JS Array/Object spread operator and Variadic Functions":"https://oprearocks.medium.com/what-do-the-three-dots-mean-in-javascript-bc5749439c9a",
+    "JS Optional Chaining Operator":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining",
 
     "JSX looks like an abomination": "https://medium.com/javascript-scene/jsx-looks-like-an-abomination-1c1ec351a918",
+
+    "React Hooks": "https://www.pluralsight.com/guides/simplifying-redux-bindings-with-react-hooks",
 
     "Redux Three Principles": "https://redux.js.org/understanding/thinking-in-redux/three-principles",
 
     "Mongo User Creation": "https://docs.mongodb.com/manual/reference/method/db.createUser/",
     "Mongo Cheat Sheet": "https://developer.mongodb.com/quickstart/cheat-sheet/",
+
+    "How to Host Nodejs/Express Applications on Namecheap cPanel ":"https://dev.to/iamnotstatic/how-to-host-nodejs-express-applications-on-namecheap-cpanel-nh9",
+    "Build and deploy frontend React applications in Namecheap":"https://davenewman.tech/blog/host-react-namecheap/",
+
+    "React Route Dom - Official Documentation","https://reactrouter.com/web/guides/quick-start"
 
 }

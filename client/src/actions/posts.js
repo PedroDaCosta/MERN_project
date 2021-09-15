@@ -1,4 +1,6 @@
 import * as api from "../api";
+import * as constants from '../constants/actionTypes';
+
 
 /**
  * Action Creators - Functions that return Actions. 
@@ -15,13 +17,15 @@ export const getPosts = () => async (dispatch) => {
     promise function that in turn returns an http reponse. Then the response 
     is imediatly deconstructed with the use of the "destructuring assignment 
     syntax" that serch for the key 'data' and returns its value/s.*/
+    
     const { data } = await api.fetchPosts();
-
+    console.log(data);
+    
     /*Dispatch the action to the reducer by means of the middlewear in this case redux-thunk*/
-    dispatch({ type: "FETCH_ALL", payload: data });
+    dispatch({ type: constants.FETCH_ALL, payload: data });
 
   }catch (err) {
-    console.log(err.message);
+    console.log(err);
   }
 };
 
@@ -33,7 +37,51 @@ export const createPost = (post) => async (dispatch) => {
     const { data } = await api.createPost(post);
     //console.log('response contend: ', data);
     
-    dispatch({ type: "CREATE", payload: data });
+    dispatch({ type: constants.CREATE, payload: data });
+
+  }catch (err) {
+    console.log(err.message);
+  }
+};
+
+/*similar as the previous function but use other api function*/
+export const updatePost = (id, post) => async (dispatch) => {
+  try{
+    
+    //console.log('request contend: ', post);
+    const { data } = await api.updatePost(id, post);
+    //console.log('response contend: ', data);
+    
+    dispatch({ type: constants.UPDATE, payload: data });
+
+  }catch (err) {
+    console.log(err.message);
+  }
+};
+
+/*similar as the previous function but use other api function*/
+export const deletePost = (id) => async (dispatch) => {
+  try{
+    
+    const deletedPost = await api.deletePost(id) != null;
+    //returns nothing since its not needed
+    
+    deletedPost && dispatch({ type: constants.DELETE, payload: id });
+
+  }catch (err) {
+    console.log(err.message);
+  }
+};
+
+/*similar as the previous function but use other api function*/
+export const likePost = (id) => async (dispatch) => {
+  try{
+    
+    //console.log('request contend: ', post);
+    const { data } = await api.likePost(id);
+    //console.log('response contend: ', data);
+    
+    dispatch({ type: constants.LIKE, payload: data });
 
   }catch (err) {
     console.log(err.message);

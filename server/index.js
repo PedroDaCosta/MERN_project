@@ -2,8 +2,12 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
 
 import postRoutes from './routes/posts.js';
+import userRoutes from './routes/users.js';
+
+dotenv.config();
 
 const app = express();
 
@@ -15,9 +19,10 @@ app.use(cors());
 
 //define this only after you define cors;
 app.use('/posts', postRoutes); 
+app.use('/users', userRoutes); 
 
 //stores informations about Database Connection to mongodb on atlas need to specify <user>:<password> and <db_name> 
-const CONNECTION_URL = 'mongodb+srv://user:123@cluster0.3tryb.mongodb.net/Project_test?retryWrites=true&w=majority';
+const CONNECTION_URL = process.env.CONNECTION_URL;
 
 //handles the <port> be it fixed or stored in .env files
 const PORT = process.env.PORT || 5000;
